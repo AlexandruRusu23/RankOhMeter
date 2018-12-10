@@ -1,0 +1,25 @@
+<mat-toolbar color="warn">
+  <mat-toolbar-row>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">
+        menu
+      </mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <div class="navigation">
+      <div class="nav-title">Navigation</div>
+    </div>
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink='/first'>Listing players</a>
+      <a mat-list-item routerLink='/second'>Sim match</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

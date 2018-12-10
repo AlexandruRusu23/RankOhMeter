@@ -62,6 +62,22 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>com.microsoft.azure</groupId>
+				<artifactId>azure-webapp-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+
+					<!-- Web App information -->
+					<resourceGroup>${rankohmeterwebapp}</resourceGroup>
+					<appName>${rankohmeter}</appName>
+					<region>${Central US}</region>
+
+					<!-- Java Runtime Stack for Web App on Linux-->
+					<linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
+
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
