@@ -25,9 +25,13 @@ def get_current_leaderboard(soup):
     table_body = table.find('tbody')
     rows = table_body.find_all('tr')
     for row in rows:
-        cols = row.find_all('td')
-        cols = [elem.text.strip() for elem in cols]
-        current_players_list.append([elem for elem in cols if elem])
+        data_cols = row.find_all('td')
+        player_champs = row.find_all('td', class_='mhide ce')
+        player_champs = [elem.find_all('a') for elem in player_champs if isinstance(elem.img, type(None)) is False]
+        player_champs = [iter.img.get('alt', '') for elem in player_champs for iter in elem]
+        data_cols = [elem.text.strip() for elem in data_cols]
+        data_cols.append(';'.join(player_champs))
+        current_players_list.append([elem for elem in data_cols if elem])
     #[print(item) for item in current_players_list]
     return current_players_list
 
@@ -45,8 +49,11 @@ def get_leaderboard(root_url = str(), region = str()):
             csv_header = get_leaderboard_table_head(soup)
             with open('output.csv', 'a+') as output_file:
                 for item in csv_header:
+                    not_last_index = csv_header.index(item) < len(csv_header) - 1
                     item = item.replace(',', '')
-                    output_file.write(str(item) + ',')
+                    output_file.write(str(item))
+                    if not_last_index is True:
+                        output_file.write(',')
                 output_file.write('\n')
             header_added = True
 
@@ -61,9 +68,16 @@ def get_leaderboard(root_url = str(), region = str()):
 
         with open('output.csv', 'a+') as output_file:
             for current_list in current_leaderboard:
+                #get rid of extra ',' that may corupt our csv
+                current_list = [item.replace(',', '') for item in current_list]
+                #remove points from Tier
+                current_list[4] = current_list[4].replace(str(current_list[5]), '')
+
                 for item in current_list:
-                    item = item.replace(',', '')
-                    output_file.write(str(item) + ',')
+                    not_last_index = current_list.index(item) < len(current_list) - 1
+                    output_file.write(str(item))
+                    if not_last_index is True:
+                        output_file.write(',')
                 output_file.write('\n')
         print(page_number)
         page_number += 1
