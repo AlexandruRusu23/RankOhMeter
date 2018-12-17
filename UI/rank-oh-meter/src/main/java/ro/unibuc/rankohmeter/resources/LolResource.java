@@ -20,8 +20,7 @@ public class LolResource {
     private final LolService lolService;
 
     @GetMapping
-    public ResponseEntity<List<LolModel>> getAllVoucherTrigger(
-            final LolModel lolModel) {
-        return ResponseEntity.ok(lolService.getAllPlayers(lolModel));
+    public ResponseEntity<List<LolModel>> getAllVoucherTrigger() {
+        return ResponseEntity.ok(lolService.getAllPlayers());
     }
 }

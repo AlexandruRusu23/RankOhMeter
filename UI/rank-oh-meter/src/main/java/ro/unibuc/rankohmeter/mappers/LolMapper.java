@@ -14,7 +14,7 @@ public class LolMapper {
                 .losses(lol.getLosses())
                 .division(lol.getDivision())
                 .points(lol.getPoints())
-                .most_used_champs(lol.getMost_used_champs())
+                .most_used_champs(lol.getMostUsedChamps())
                 .kills(lol.getKills())
                 .deaths(lol.getDeaths())
                 .assists(lol.getAssists())

@@ -19,7 +19,7 @@ public class LolService {
     @NonNull
     private final LolRepository lolRepository;
 
-    public List<LolModel> getAllPlayers(final LolModel lolModel) {
+    public List<LolModel> getAllPlayers() {
         return lolRepository.findAll().stream().map(LolMapper::toModel).collect(Collectors.toList());
     }
 }

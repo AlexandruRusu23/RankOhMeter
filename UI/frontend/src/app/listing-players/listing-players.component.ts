@@ -1,24 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import {LolService} from './listing-players.service';
+import {LolModel} from './listing-players.model';
 
 @Component({
   selector: 'app-listing-players',
@@ -27,11 +9,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ListingPlayersComponent implements OnInit {
 
-  constructor() { }
+  dataSource: LolModel[];
+  displayedColumns = ['id', 'name', 'wins', 'losses', 'division', 'points', 'mostUsedChamps', 'kills', 'deaths', 'assists'];
+  displayedColumnsMap = [
+    {id: 'id', name: 'Id'},
+    {id: 'name', name: 'name'},
+    {id: 'wins', name: 'Wins'},
+    {id: 'losses', name: 'Losses'},
+    {id: 'division', name: 'Division'},
+    {id: 'points', name: 'Points'},
+    {id: 'mostUsedChamps', name: 'Most used champs'},
+    {id: 'kills', name: 'Kills'},
+    {id: 'deaths', name: 'Deaths'},
+    {id: 'assists', name: 'Assists'}
+    ];
+
+  constructor(private lolService: LolService) { }
 
   ngOnInit() {
+    this.lolService.getAllPlayers().subscribe(lolList => this.dataSource = lolList);
   }
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
 }

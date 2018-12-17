@@ -10,6 +10,8 @@ import {MainNavComponent} from './main-nav/main-nav.component';
 import { ListingPlayersComponent } from './listing-players/listing-players.component';
 import { SecondComponent } from './second/second.component';
 import {CustomAngularMaterialModule} from "./custom-angular-material.module";
+import {LolService} from './listing-players/listing-players.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,10 @@ import {CustomAngularMaterialModule} from "./custom-angular-material.module";
     CustomAngularMaterialModule,
     AppRoutingModule,
     LayoutModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
