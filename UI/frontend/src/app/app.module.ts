@@ -23,11 +23,6 @@ import {CustomAngularMaterialModule} from "./custom-angular-material.module";
     CustomAngularMaterialModule,
     AppRoutingModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
     NoopAnimationsModule
   ],
   providers: [],
