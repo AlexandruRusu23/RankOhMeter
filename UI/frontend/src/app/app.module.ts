@@ -9,7 +9,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MainNavComponent} from './main-nav/main-nav.component';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
-import {SidenavResponsiveComponent} from './sidenav-responsive/sidenav-responsive.component';
+import {CustomAngularMaterialModule} from "./custom-angular-material.module";
 
 @NgModule({
   declarations: [
@@ -17,10 +17,10 @@ import {SidenavResponsiveComponent} from './sidenav-responsive/sidenav-responsiv
     MainNavComponent,
     FirstComponent,
     SecondComponent,
-    SidenavResponsiveComponent
   ],
   imports: [
     BrowserModule,
+    CustomAngularMaterialModule,
     AppRoutingModule,
     LayoutModule,
     MatToolbarModule,
