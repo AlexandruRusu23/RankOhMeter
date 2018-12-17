@@ -7,7 +7,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MainNavComponent} from './main-nav/main-nav.component';
-import { FirstComponent } from './first/first.component';
+import { ListingPlayersComponent } from './listing-players/listing-players.component';
 import { SecondComponent } from './second/second.component';
 import {CustomAngularMaterialModule} from "./custom-angular-material.module";
 
@@ -15,7 +15,7 @@ import {CustomAngularMaterialModule} from "./custom-angular-material.module";
   declarations: [
     AppComponent,
     MainNavComponent,
-    FirstComponent,
+    ListingPlayersComponent,
     SecondComponent,
   ],
   imports: [

@@ -21,11 +21,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'app-first',
-  templateUrl: './first.component.html',
-  styleUrls: ['./first.component.css']
+  selector: 'app-listing-players',
+  templateUrl: './listing-players.component.html',
+  styleUrls: ['./listing-players.component.css']
 })
-export class FirstComponent implements OnInit {
+export class ListingPlayersComponent implements OnInit {
 
   constructor() { }
 
