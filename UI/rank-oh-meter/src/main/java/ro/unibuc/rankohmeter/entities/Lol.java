@@ -39,7 +39,7 @@ public class Lol {
     private Long points;
 
     @NotNull
-    private String most_used_champs;
+    private String mostUsedChamps;
 
     @NotNull
     private Long kills;

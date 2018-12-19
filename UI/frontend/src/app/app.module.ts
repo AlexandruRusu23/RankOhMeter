@@ -7,30 +7,28 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MainNavComponent} from './main-nav/main-nav.component';
-import { FirstComponent } from './first/first.component';
+import { ListingPlayersComponent } from './listing-players/listing-players.component';
 import { SecondComponent } from './second/second.component';
-import {SidenavResponsiveComponent} from './sidenav-responsive/sidenav-responsive.component';
+import {CustomAngularMaterialModule} from "./custom-angular-material.module";
+import {LolService} from './listing-players/listing-players.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    FirstComponent,
+    ListingPlayersComponent,
     SecondComponent,
-    SidenavResponsiveComponent
   ],
   imports: [
     BrowserModule,
+    CustomAngularMaterialModule,
     AppRoutingModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

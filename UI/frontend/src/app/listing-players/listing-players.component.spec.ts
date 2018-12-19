@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidenavResponsiveComponent } from './sidenav-responsive.component';
+import { ListingPlayersComponent } from './listing-players.component';
 
-describe('SidenavResponsiveComponent', () => {
-  let component: SidenavResponsiveComponent;
-  let fixture: ComponentFixture<SidenavResponsiveComponent>;
+describe('ListingPlayersComponent', () => {
+  let component: ListingPlayersComponent;
+  let fixture: ComponentFixture<ListingPlayersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidenavResponsiveComponent ]
+      declarations: [ ListingPlayersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SidenavResponsiveComponent);
+    fixture = TestBed.createComponent(ListingPlayersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

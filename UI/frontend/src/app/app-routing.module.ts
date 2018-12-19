@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {FirstComponent} from './first/first.component';
+import {ListingPlayersComponent} from './listing-players/listing-players.component';
 import {SecondComponent} from './second/second.component';
-import {SidenavResponsiveComponent} from './sidenav-responsive/sidenav-responsive.component';
 
 const routes: Routes = [
-  { path: '', component: FirstComponent, data: { title: 'First Component' } },
-  { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
+  { path: '', component: ListingPlayersComponent, data: { title: 'Listing Players Component' } },
+  { path: 'listing-players', component: ListingPlayersComponent, data: { title: 'Listing Players Component' } },
   { path: 'second', component: SecondComponent, data: { title: 'Second Component' } },
-  { path: 'nav', component: SidenavResponsiveComponent, data: { title: 'Nav Component' } }
 ];
 
 @NgModule({
