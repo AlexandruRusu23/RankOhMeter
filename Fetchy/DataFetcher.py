@@ -3,4 +3,5 @@ DataFetcher module
 """
 
 class DataFetcher(object):
-    pass
+    def __init__(self):
+        self.__soup = None
