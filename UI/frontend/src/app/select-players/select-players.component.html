@@ -1,5 +1,14 @@
 <table mat-table class="tables-style" [dataSource]="dataSource" class="mat-elevation-z8">
 
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>Select player</th>
+    <td mat-cell *matCellDef="let element">
+      <button class="mat-button" (click)="addPlayer(element)">
+        <mat-icon class="material-icons clickable">add</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
   <ng-container *ngFor="let column of displayedColumnsMap" matColumnDef="{{column.id}}">
     <th mat-header-cell *matHeaderCellDef>{{column.name}}</th>
     <td mat-cell *matCellDef="let element">{{element[column.id]}}</td>

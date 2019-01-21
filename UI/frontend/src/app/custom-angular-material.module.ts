@@ -7,7 +7,7 @@ import {
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import {NgModule} from "@angular/core";
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -26,7 +26,7 @@ import {NgModule} from "@angular/core";
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
   ],
 })
 export class CustomAngularMaterialModule {

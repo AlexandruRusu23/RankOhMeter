@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LolService} from './listing-players.service';
 import {LolModel} from './listing-players.model';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-listing-players',
@@ -13,7 +14,7 @@ export class ListingPlayersComponent implements OnInit {
   displayedColumns = ['id', 'name', 'wins', 'losses', 'division', 'points', 'mostUsedChamps', 'kills', 'deaths', 'assists'];
   displayedColumnsMap = [
     {id: 'id', name: 'Id'},
-    {id: 'name', name: 'name'},
+    {id: 'name', name: 'Name'},
     {id: 'wins', name: 'Wins'},
     {id: 'losses', name: 'Losses'},
     {id: 'division', name: 'Division'},
@@ -24,9 +25,16 @@ export class ListingPlayersComponent implements OnInit {
     {id: 'assists', name: 'Assists'}
     ];
 
+  playersSubscription: Subscription;
+
   constructor(private lolService: LolService) { }
 
   ngOnInit() {
-    this.lolService.getAllPlayers().subscribe(lolList => this.dataSource = lolList);
+    this.playersSubscription = this.lolService.playersChanged.subscribe(
+      (players) => {
+        this.lolService.dataSource = players;
+        this.dataSource = this.lolService.dataSource;
+      });
+    this.lolService.loadPlayers();
   }
 }
