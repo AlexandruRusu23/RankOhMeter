@@ -20,9 +20,9 @@ export class LolService {
     return { ...this.genericPlayers };
   }
 
-  loadPlayers(pageIndex: number, pageSize: number) {
+  loadPlayers(pageIndex: number, pageSize: number,filter) {
     this.httpClient.get<GenericListModel<LolModel>>(this.lolUrl,
-    {params: this.getFilterParams(pageIndex, pageSize)})
+    {params: this.getFilterParams(pageIndex, pageSize, filter)})
     .subscribe((players) => {
         this.genericPlayers = players;
         this.playersChanged.next(this.getPlayers());
@@ -37,12 +37,22 @@ export class LolService {
   //     });
   // }
 
-  getFilterParams(pageIndex: number, pageSize: number) {
+  getFilterParams(pageIndex: number, pageSize: number, filter) {
+    console.log(filter);
     let params = new HttpParams();
     params = params.append('page', String(pageIndex));
     params = params.append('size', String(pageSize));
 
-    return params;
+    const filterFields = ['nameEquals', 'divisionEquals', 'mostUsedChamps'];
+
+    const filters =  filterFields.reduce((previousParams: HttpParams, currentField: string) => {
+      if (!!filter[currentField]) {
+        previousParams = previousParams.append(currentField, filter[currentField]);
+      }
+      return previousParams;
+    }, params);
+    return filters;
+
   }
 
 }

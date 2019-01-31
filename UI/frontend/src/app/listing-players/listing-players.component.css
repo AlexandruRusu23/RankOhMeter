@@ -3,3 +3,26 @@ table {
   background-color: white;
 }
 
+mat-form-field {
+  width: 9em;
+}
+
+.btn_margin {
+  margin: 1.5rem 1.5rem 1.5rem 0;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 1em;
+}
+
+th {
+  vertical-align: top;
+}
+
+.filter {
+  display: block;
+}
+
+.header {
+  padding: 5px;
+}

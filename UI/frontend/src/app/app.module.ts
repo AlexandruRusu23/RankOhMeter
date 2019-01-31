@@ -13,6 +13,7 @@ import {LolService} from './services/lol.service';
 import {HttpClientModule} from '@angular/common/http';
 import {DialogDataComponent, SimMatchComponent} from './sim-match/sim-match.component';
 import {SelectPlayersComponent} from "./select-players/select-players.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,10 @@ import {SelectPlayersComponent} from "./select-players/select-players.component"
     LayoutModule,
     NoopAnimationsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   entryComponents: [
     // SimMatchComponent,

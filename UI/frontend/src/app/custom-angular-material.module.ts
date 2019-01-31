@@ -1,12 +1,13 @@
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatIconModule,
+  MatIconModule, MatInputModule,
+  MatLabel,
   MatListModule,
   MatPaginatorModule,
   MatSidenavModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
 } from '@angular/material';
 import {NgModule} from '@angular/core';
 
@@ -20,6 +21,7 @@ import {NgModule} from '@angular/core';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatInputModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -30,6 +32,7 @@ import {NgModule} from '@angular/core';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatInputModule,
   ],
 })
 export class CustomAngularMaterialModule {

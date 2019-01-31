@@ -41,7 +41,7 @@ export class SelectPlayersComponent implements OnInit {
         this.simMatchPlayersDataSource.data = simMatchPlayers.items;
         this.totalCount = simMatchPlayers.totalCount;
       });
-    this.lolService.loadPlayers(this.pageIndex, this.pageSize);
+    this.lolService.loadPlayers(this.pageIndex, this.pageSize, null);
   }
 
   onPageChange(event) {
@@ -56,7 +56,7 @@ export class SelectPlayersComponent implements OnInit {
         queryParams: {page: pageIndex, size: pageSize},
       })
       .then(() => {
-        this.lolService.loadPlayers(this.pageIndex, this.pageSize);
+        this.lolService.loadPlayers(this.pageIndex, this.pageSize, null);
       });
   }
 
