@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LolModel {
+public class LolEntityModel extends GenericListFilterModel {
 
     private Long id;
 
@@ -23,11 +23,13 @@ public class LolModel {
 
     private Long points;
 
-    private String most_used_champs;
+    private String mostUsedChamps;
 
     private Long kills;
 
     private Long deaths;
 
     private Long assists;
+
+    private Long playerRank;
 }

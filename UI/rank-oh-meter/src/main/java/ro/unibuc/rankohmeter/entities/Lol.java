@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -19,11 +20,9 @@ import java.time.LocalDateTime;
 public class Lol {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lol_seq_gen")
-    @SequenceGenerator(allocationSize = 1, sequenceName = "lol_seq", name = "lol_seq_gen")
     private Long id;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
     @NotNull
@@ -32,13 +31,13 @@ public class Lol {
     @NotNull
     private Long losses;
 
-    @NotNull
+    @NotEmpty
     private String division;
 
     @NotNull
     private Long points;
 
-    @NotNull
+    @NotEmpty
     private String mostUsedChamps;
 
     @NotNull
@@ -50,9 +49,6 @@ public class Lol {
     @NotNull
     private Long assists;
 
-    @Type(type = "org.hibernate.type.LocalDateTimeType")
-    private LocalDateTime createdAt;
-
-    @Type(type = "org.hibernate.type.LocalDateTimeType")
-    private LocalDateTime updatedAt;
+    @NotNull
+    private Long playerRank;
 }

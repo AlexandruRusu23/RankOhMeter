@@ -4,12 +4,13 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ro.unibuc.rankohmeter.models.LolModel;
+import ro.unibuc.rankohmeter.models.LolFilterModel;
+import ro.unibuc.rankohmeter.models.GenericListModel;
+import ro.unibuc.rankohmeter.models.LolEntityModel;
 import ro.unibuc.rankohmeter.services.LolService;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class LolResource {
     private final LolService lolService;
 
     @GetMapping
-    public ResponseEntity<List<LolModel>> getAllVoucherTrigger() {
-        return ResponseEntity.ok(lolService.getAllPlayers());
+    public ResponseEntity<GenericListModel<LolEntityModel>> getAllVoucherTrigger(@ModelAttribute final LolFilterModel lolFilterModel) {
+        return ResponseEntity.ok(lolService.getAllPlayers(lolFilterModel));
     }
 }
