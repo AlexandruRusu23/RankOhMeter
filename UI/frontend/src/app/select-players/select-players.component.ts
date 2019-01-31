@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {LolModel} from './select-players.model';
-import {LolService} from "../listing-players/listing-players.service";
+import {LolService} from "../services/lol.service";
 import {Subscription} from "rxjs";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material";
 
 @Component({
   selector: 'app-select-players',
@@ -11,48 +12,82 @@ import {Router} from "@angular/router";
 })
 export class SelectPlayersComponent implements OnInit {
 
-  dataSource: LolModel[];
-  // displayedColumns = ['select', 'name', 'wins', 'losses', 'division', 'points', 'mostUsedChamps', 'kills', 'deaths', 'assists'];
-  displayedColumns = ['select', 'name', 'wins', 'losses', 'points'];
+  displayedColumns = ['select', 'name', 'wins', 'losses', 'division', 'mostUsedChamps'];
   displayedColumnsMap = [
-    // {id: 'id', name: 'Id'},
     {id: 'name', name: 'Name'},
     {id: 'wins', name: 'Wins'},
     {id: 'losses', name: 'Losses'},
-    // {id: 'division', name: 'Division'},
-    {id: 'points', name: 'Points'},
-    // {id: 'mostUsedChamps', name: 'Most used champs'},
-    // {id: 'kills', name: 'Kills'},
-    // {id: 'deaths', name: 'Deaths'},
-    // {id: 'assists', name: 'Assists'}
-    ];
+    {id: 'division', name: 'Division'},
+    {id: 'mostUsedChamps', name: 'Most used champs'},
+  ];
 
+  simMatchPlayersDataSource = new MatTableDataSource<LolModel>();
   playersSubscription: Subscription;
 
-  constructor(private lolService: LolService,
-              private router: Router) { }
+  pageSizeOptions = [5, 10, 20];
+  totalCount = 10;
+  pageIndex = 0;
+  pageSize = 5;
+
+  @Output() getPlayer = new EventEmitter();
+
+  constructor(public lolService: LolService,
+              public router: Router,
+              public route: ActivatedRoute){}
 
   ngOnInit() {
     this.playersSubscription = this.lolService.playersChanged.subscribe(
-      (players) => {
-        this.lolService.playersForSelect = players;
-        this.dataSource = this.lolService.playersForSelect;
+      (simMatchPlayers) => {
+        this.simMatchPlayersDataSource.data = simMatchPlayers.items;
+        this.totalCount = simMatchPlayers.totalCount;
       });
-    // this.lolService.loadPlayersModal();
-    this.lolService.loadPlayers();
+    this.lolService.loadPlayers(this.pageIndex, this.pageSize);
   }
 
-  addPlayer(player: LolModel) {
-    // this.lolService.loadPlayersModal();
-    this.lolService.loadPlayers();
-    this.lolService.selectedPlayers.push(this.lolService.playersForSelect.filter(currentPlayer => currentPlayer.id === player.id)[0]);
+  onPageChange(event) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.putParamsInUrl(this.pageIndex, this.pageSize);
+  }
 
-    const index = this.lolService.playersForSelect.indexOf(player, 0);
-    if (index > -1) {
-      this.lolService.playersForSelect.splice(index, 1);
+  putParamsInUrl(pageIndex: number, pageSize: number) {
+    this.router
+      .navigate(['/sim-match'], {
+        queryParams: {page: pageIndex, size: pageSize},
+      })
+      .then(() => {
+        this.lolService.loadPlayers(this.pageIndex, this.pageSize);
+      });
+  }
+
+  //TODO
+  addPlayer(player: LolModel) {
+      console.log('ai adaugat un jucator');
+      this.getPlayer.emit(player);
+      this.lolService.dialog.closeAll();
     }
 
-    this.lolService.dialog.closeAll();
-    console.log(this.lolService.selectedPlayers);
-  }
+  // ngOnInit() {
+  //   this.playersSubscription = this.lolService.playersChanged.subscribe(
+  //     (players) => {
+  //       this.lolService.playersForSelect = players;
+  //       this.dataSource = this.lolService.playersForSelect;
+  //     });
+  //   // this.lolService.loadPlayersModal();
+  //   this.lolService.loadPlayers();
+  // }
+  //
+  // addPlayer(player: LolModel) {
+  //   // this.lolService.loadPlayersModal();
+  //   this.lolService.loadPlayers();
+  //   this.lolService.selectedPlayers.push(this.lolService.playersForSelect.filter(currentPlayer => currentPlayer.id === player.id)[0]);
+  //
+  //   const index = this.lolService.playersForSelect.indexOf(player, 0);
+  //   if (index > -1) {
+  //     this.lolService.playersForSelect.splice(index, 1);
+  //   }
+  //
+  //   this.lolService.dialog.closeAll();
+  //   console.log(this.lolService.selectedPlayers);
+  // }
 }

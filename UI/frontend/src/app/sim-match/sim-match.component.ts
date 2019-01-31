@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface DialogData {
-  // animal: 'panda' | 'unicorn' | 'lion';
 }
 
 @Component({
@@ -20,11 +19,11 @@ export class SimMatchComponent implements OnInit {
   openDialog() {
     this.dialog.open(DialogDataComponent, {
       data: {
-        // animal: 'panda'
       }
     });
   }
 
+  //TODO
   simMatch() {
     console.log('Sim match');
   }

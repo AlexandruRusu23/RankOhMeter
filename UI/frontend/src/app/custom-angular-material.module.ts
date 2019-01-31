@@ -3,6 +3,7 @@ import {
   MatCheckboxModule,
   MatIconModule,
   MatListModule,
+  MatPaginatorModule,
   MatSidenavModule,
   MatTableModule,
   MatToolbarModule
@@ -18,6 +19,7 @@ import {NgModule} from '@angular/core';
     MatIconModule,
     MatListModule,
     MatTableModule,
+    MatPaginatorModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -27,6 +29,7 @@ import {NgModule} from '@angular/core';
     MatIconModule,
     MatListModule,
     MatTableModule,
+    MatPaginatorModule,
   ],
 })
 export class CustomAngularMaterialModule {
