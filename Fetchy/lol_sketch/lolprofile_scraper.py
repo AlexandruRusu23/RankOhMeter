@@ -99,4 +99,4 @@ TR = '/tr'
 RU = '/ru'
 
 if __name__ == '__main__':
-    get_leaderboard(ROOT_URL, EUNE)
+    get_leaderboard(ROOT_URL, NA)
