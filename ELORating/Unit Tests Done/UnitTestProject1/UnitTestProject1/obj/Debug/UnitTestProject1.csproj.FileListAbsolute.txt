@@ -1,0 +1,15 @@
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\UnitTestProject1.dll.config
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\Newtonsoft.Json.dll
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\nunit.framework.dll
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\RiotNet.dll
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\Newtonsoft.Json.pdb
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\Newtonsoft.Json.xml
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\nunit.framework.pdb
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\nunit.framework.xml
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\bin\Debug\RiotNet.xml
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\UnitTestProject1\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
