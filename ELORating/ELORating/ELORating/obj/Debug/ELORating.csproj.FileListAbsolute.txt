@@ -1,0 +1,13 @@
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\ELORating.pdb
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\obj\Debug\ELORating.csprojResolveAssemblyReference.cache
+c:\users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\obj\Debug\ELORating.pdb
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\Newtonsoft.Json.dll
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\Newtonsoft.Json.xml
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\RiotNet.dll
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\RiotNet.xml
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\nunit.framework.dll
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\nunit.framework.pdb
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\nunit.framework.xml
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\ELORating.dll.config
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\bin\Debug\ELORating.dll
+C:\Users\andreea.rentea\documents\visual studio 2015\Projects\ELORating\ELORating\obj\Debug\ELORating.dll
