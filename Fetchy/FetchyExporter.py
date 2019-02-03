@@ -32,13 +32,16 @@ class FetchyExporter(object):
             self.__connection.close()
             print('Database connection closed.')
     
-    def insert_player_data(self, table_name, player_list):
+    def upsert_lol_player_data(self, table_name, player_list):
+        '''
+        Upsert a lol player
+        '''
         insert_command = 'INSERT INTO {table_name}(name, wins, losses, division, points, most_used_champs,\
-        kills, deaths, assists, created_at, updated_at) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)\
+        kills, deaths, assists, player_rank) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)\
         ON CONFLICT (name) DO UPDATE SET\
-        wins=EXCLUDED.wins, losses=EXCLUDED.losses, division=EXCLUDED.losses, points=EXCLUDED.points,\
+        wins=EXCLUDED.wins, losses=EXCLUDED.losses, division=EXCLUDED.division, points=EXCLUDED.points,\
         most_used_champs=EXCLUDED.most_used_champs, kills=EXCLUDED.kills, deaths=EXCLUDED.deaths,\
-        assists=EXCLUDED.assists, updated_at=EXCLUDED.updated_at'.format(
+        assists=EXCLUDED.assists, player_rank=EXCLUDED.player_rank'.format(
             table_name = table_name)
         try:
             cur = self.__connection.cursor()
@@ -51,5 +54,5 @@ class FetchyExporter(object):
 if __name__ == '__main__':
     fetchy_exporter = FetchyExporter()
     fetchy_exporter.connect()
-    fetchy_exporter.insert_player_data('lol', ['Yuhu', '66', '0', '23', '123', '34', '299', '0', '233', '01-01-2018', '06-06-2018'])
+    fetchy_exporter.upsert_lol_player_data('lol', ['Yuhu', '124', '0', '23', '123', '34', '299', '0', '233', '1'])
     fetchy_exporter.disconnect()
