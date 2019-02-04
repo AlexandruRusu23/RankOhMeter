@@ -25,11 +25,11 @@ public class LolEntityModel extends GenericListFilterModel {
 
     private String mostUsedChamps;
 
-    private Long kills;
+    private String kills;
 
-    private Long deaths;
+    private String deaths;
 
-    private Long assists;
+    private String assists;
 
     private Long playerRank;
 }

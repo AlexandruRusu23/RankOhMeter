@@ -7,8 +7,8 @@ CREATE TABLE lol
   division character varying(255) NOT NULL,
   points BIGINT NOT NULL,
   most_used_champs character varying(255) NOT NULL,
-  kills BIGINT NOT NULL,
-  deaths BIGINT NOT NULL,
-  assists BIGINT NOT NULL,
+  kills character varying(255) NOT NULL,
+  deaths character varying(255) NOT NULL,
+  assists character varying(255) NOT NULL,
   player_rank BIGINT NOT NULL
 );

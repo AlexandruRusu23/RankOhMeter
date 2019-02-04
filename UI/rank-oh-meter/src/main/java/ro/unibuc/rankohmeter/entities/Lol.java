@@ -40,14 +40,14 @@ public class Lol {
     @NotEmpty
     private String mostUsedChamps;
 
-    @NotNull
-    private Long kills;
+    @NotEmpty
+    private String kills;
 
-    @NotNull
-    private Long deaths;
+    @NotEmpty
+    private String deaths;
 
-    @NotNull
-    private Long assists;
+    @NotEmpty
+    private String assists;
 
     @NotNull
     private Long playerRank;
