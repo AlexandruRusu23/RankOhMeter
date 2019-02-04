@@ -34,7 +34,7 @@ class FetchyExporter(object):
     
     def upsert_lol_player_data(self, table_name, player_list):
         '''
-        Upsert a lol player
+        Upsert a lol player by giving a list with player's details
         '''
         insert_command = 'INSERT INTO {table_name}(name, wins, losses, division, points, most_used_champs,\
         kills, deaths, assists, player_rank) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)\
