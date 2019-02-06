@@ -129,12 +129,32 @@ class LoLFetcher(DataFetcher.DataFetcher):
         '''
         This method returns player's kda data searching by name
         '''
-        full_url = root_url + region + '/' + player_name
-        raw_html = self.simple_get(full_url)
-        soup = DataFetcher.BeautifulSoup(raw_html, 'html.parser')
-        player_kda = soup.find("div",{"class":"kda tooltip"})
-        player_kda_result = player_kda.text.replace('\n','').replace('\t','').split('/')
-        return player_kda_result
+        try:
+            full_url = root_url + region + '/' + player_name
+            raw_html = self.simple_get(full_url)
+            soup = DataFetcher.BeautifulSoup(raw_html, 'html.parser')
+            player_kda = soup.find("div",{"class":"kda tooltip"})
+            player_kda_result = player_kda.text.replace('\n','').replace('\t','').split('/')
+            return player_kda_result
+        except Exception:
+            print('Player {player_name} not found on url'.format(player_name = player_name))
+            return [-1 for i in range(3)]
+    
+    def get_player_muc(self, root_url = str(), region = str(), player_name = str()):
+        '''
+        This method returns player's most used champs data searching by name
+        '''
+        try:
+            full_url = root_url + region + '/' + player_name
+            raw_html = self.simple_get(full_url)
+            soup = DataFetcher.BeautifulSoup(raw_html, 'html.parser')
+            player_kda = soup.find("div",{"class":"s-block2"})
+            muchamps_html = player_kda.find_all('span', {'class':'champid'})
+            muchamps_list = [iter.text for iter in muchamps_html]
+            #return top 5 most used champs
+            return ','.join(muchamps_list[:5])
+        except Exception:
+            return 'No record.'
 
     def store_leaderboard_data(self, root_url = str(), region = str()):
         '''
@@ -173,11 +193,12 @@ class LoLFetcher(DataFetcher.DataFetcher):
                 player_data_list[LoLFetcher.DATABASE_INDEX_LOSSES] = current_list[LoLFetcher.FETCHER_INDEX_LOSSES]
                 player_data_list[LoLFetcher.DATABASE_INDEX_DIVISION] = current_list[LoLFetcher.FETCHER_INDEX_DIVISION]
                 player_data_list[LoLFetcher.DATABASE_INDEX_POINTS] = current_list[LoLFetcher.FETCHER_INDEX_POINTS]
-                #player_data_list[LoLFetcher.DATABASE_INDEX_MOST_USED_CHAMPS] = current_list[LoLFetcher.FETCHER_INDEX_MOST_USED_CHAMPS]
+                player_muc = self.get_player_muc(LoLFetcher.PLAYER_ROOT_URL, LoLFetcher.NA, player_data_list[LoLFetcher.DATABASE_INDEX_NAME])
+                player_data_list[LoLFetcher.DATABASE_INDEX_MOST_USED_CHAMPS] = player_muc
                 player_kda = self.get_player_kda(LoLFetcher.PLAYER_ROOT_URL, LoLFetcher.NA, player_data_list[LoLFetcher.DATABASE_INDEX_NAME])
-                player_data_list[LoLFetcher.DATABASE_INDEX_KILLS] = player_kda[0].replace('.','')
-                player_data_list[LoLFetcher.DATABASE_INDEX_DEATHS] = player_kda[1].replace('.','')
-                player_data_list[LoLFetcher.DATABASE_INDEX_ASSISTS] = player_kda[2].replace('.','')
+                player_data_list[LoLFetcher.DATABASE_INDEX_KILLS] = player_kda[0]
+                player_data_list[LoLFetcher.DATABASE_INDEX_DEATHS] = player_kda[1]
+                player_data_list[LoLFetcher.DATABASE_INDEX_ASSISTS] = player_kda[2]
                 player_data_list[LoLFetcher.DATABASE_INDEX_PLAYER_RANK] = current_list[LoLFetcher.FETCHER_INDEX_PLAYER_RANK]
                 #print(player_data_list)
                 self.__exporter.upsert_lol_player_data(LoLFetcher.DB_NAME, player_data_list)
