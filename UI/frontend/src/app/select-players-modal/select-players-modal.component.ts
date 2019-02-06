@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {LolModel} from '../models/lol.model';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-select-players-modal',
@@ -9,6 +9,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class SelectPlayersModalComponent implements OnInit {
   playersListDataSource: LolModel[];
+  dataSource: MatTableDataSource<LolModel>;
   boxPlayerId: string;
   displayedColumns: string[] = [
     'selectPlayer',
@@ -20,22 +21,28 @@ export class SelectPlayersModalComponent implements OnInit {
     'mostUsedChamps',
   ];
 
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
-
   constructor(
     private dialogRef: MatDialogRef<SelectPlayersModalComponent>,
     @Inject(MAT_DIALOG_DATA) data: any) {
     this.boxPlayerId = data.playerNo;
     this.playersListDataSource = data.inputPlayersForTable;
+    this.dataSource = new MatTableDataSource(this.playersListDataSource);
   }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+
   }
 
   addPlayer(player: LolModel) {
     this.dialogRef.close([player, this.boxPlayerId]);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

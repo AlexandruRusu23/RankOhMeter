@@ -45,6 +45,8 @@ export class SimMatchComponent implements OnInit {
 
     const dialogRef = this.dialog.open(SelectPlayersModalComponent, dialogConfig);
 
+
+
     dialogRef.afterClosed().subscribe(
       (res) => {
         if(this.playersBox[res[1]] != null) {
