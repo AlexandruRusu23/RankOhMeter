@@ -6,9 +6,9 @@ export class LolModel {
               public division: string,
               public points: number,
               public mostUsedChamps: string,
-              public kills: number,
-              public deaths: number,
-              public assists: number,
+              public kills: string,
+              public deaths: string,
+              public assists: string,
   ) {
   }
 }
