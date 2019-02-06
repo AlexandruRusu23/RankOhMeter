@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ro.unibuc.rankohmeter.entities.Lol;
 import ro.unibuc.rankohmeter.models.LolFilterModel;
 import ro.unibuc.rankohmeter.models.GenericListModel;
+import ro.unibuc.rankohmeter.models.LolNoPagModel;
 import ro.unibuc.rankohmeter.repositories.LolRepository;
 import ro.unibuc.rankohmeter.mappers.LolMapper;
 import ro.unibuc.rankohmeter.models.LolEntityModel;
@@ -25,6 +26,14 @@ public class LolService {
 
     @NonNull
     private final LolRepository lolRepository;
+
+    public List<LolNoPagModel> getAllNoPagPlayers() {
+        return lolRepository
+                .findAll()
+                .stream()
+                .map(LolMapper::toNoPagModel)
+                .collect(Collectors.toList());
+    }
 
     public GenericListModel<LolEntityModel> getAllPlayers(final LolFilterModel lolFilterModel) {
         final Page<Lol> lolPlayers = lolRepository.findAll(
@@ -43,6 +52,5 @@ public class LolService {
                 .totalCount(lolPlayers.getTotalElements())
                 .build();
     }
-
 
 }
