@@ -2,23 +2,28 @@
 
   <div class="first-column">
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player1')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player1')" [innerHtml]="getPlayerName('player1')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player2')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player2')" [innerHtml]="getPlayerName('player2')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player3')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player3')" [innerHtml]="getPlayerName('player3')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player4')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player4')" [innerHtml]="getPlayerName('player4')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player5')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player5')" [innerHtml]="getPlayerName('player5')"></p>
     </div>
   </div>
 
@@ -28,23 +33,28 @@
 
   <div class="last-column">
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player6')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player6')" [innerHtml]="getPlayerName('player6')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player7')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player7')" [innerHtml]="getPlayerName('player7')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player8')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player8')" [innerHtml]="getPlayerName('player8')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player9')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player9')" [innerHtml]="getPlayerName('player9')"></p>
     </div>
 
     <div class="box">
-      <button mat-button (click)="openDialog()">(Click to add)</button>
+      <button mat-button (click)="openDialog('player10')">(Click to add)</button>
+      <p *ngIf="isSelectedPlayer('player10')" [innerHtml]="getPlayerName('player10')"></p>
     </div>
   </div>
 

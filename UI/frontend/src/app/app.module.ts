@@ -11,18 +11,17 @@ import {ListingPlayersComponent} from './listing-players/listing-players.compone
 import {CustomAngularMaterialModule} from './custom-angular-material.module';
 import {LolService} from './services/lol.service';
 import {HttpClientModule} from '@angular/common/http';
-import {DialogDataComponent, SimMatchComponent} from './sim-match/sim-match.component';
-import {SelectPlayersComponent} from "./select-players/select-players.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SimMatchComponent} from './sim-match/sim-match.component';
+import { SelectPlayersModalComponent } from './select-players-modal/select-players-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     ListingPlayersComponent,
-    SelectPlayersComponent,
     SimMatchComponent,
-    DialogDataComponent,
+    SelectPlayersModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,10 +35,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule,
 
   ],
-  entryComponents: [
-    // SimMatchComponent,
-    DialogDataComponent,
-  ],
+  entryComponents: [SelectPlayersModalComponent],
   providers: [LolService],
   bootstrap: [AppComponent]
 })

@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {LolModel} from '../models/lol.model';
-import {Subject} from 'rxjs';
-import {MatDialog} from "@angular/material";
-import {GenericListModel} from "../models/generic-list.model";
+import {Observable, Subject} from 'rxjs';
+import {MatDialog} from '@angular/material';
+import {GenericListModel} from '../models/generic-list.model';
 
 @Injectable()
 export class LolService {
@@ -13,17 +13,18 @@ export class LolService {
   private genericPlayers: GenericListModel<LolModel>;
   playersChanged: Subject<GenericListModel<LolModel>> = new Subject<GenericListModel<LolModel>>();
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog) {}
+  constructor(private httpClient: HttpClient, public dialog: MatDialog) {
+  }
 
 
   getPlayers() {
-    return { ...this.genericPlayers };
+    return {...this.genericPlayers};
   }
 
-  loadPlayers(pageIndex: number, pageSize: number,filter) {
+  loadPlayers(pageIndex: number, pageSize: number, filter) {
     this.httpClient.get<GenericListModel<LolModel>>(this.lolUrl,
-    {params: this.getFilterParams(pageIndex, pageSize, filter)})
-    .subscribe((players) => {
+      {params: this.getFilterParams(pageIndex, pageSize, filter)})
+      .subscribe((players) => {
         this.genericPlayers = players;
         this.playersChanged.next(this.getPlayers());
       });
@@ -38,14 +39,13 @@ export class LolService {
   // }
 
   getFilterParams(pageIndex: number, pageSize: number, filter) {
-    console.log(filter);
     let params = new HttpParams();
     params = params.append('page', String(pageIndex));
     params = params.append('size', String(pageSize));
 
     const filterFields = ['nameEquals', 'divisionEquals', 'mostUsedChamps'];
 
-    const filters =  filterFields.reduce((previousParams: HttpParams, currentField: string) => {
+    const filters = filterFields.reduce((previousParams: HttpParams, currentField: string) => {
       if (!!filter[currentField]) {
         previousParams = previousParams.append(currentField, filter[currentField]);
       }
@@ -55,4 +55,7 @@ export class LolService {
 
   }
 
+  getPlayersForSelectingModal(): Observable<LolModel[]> {
+    return this.httpClient.get<LolModel[]>(this.lolUrl + '/no-pag');
+  }
 }
