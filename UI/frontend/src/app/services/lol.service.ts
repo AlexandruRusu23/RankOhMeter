@@ -5,6 +5,7 @@ import {LolModel} from '../models/lol.model';
 import {Observable, Subject} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {GenericListModel} from '../models/generic-list.model';
+import {TeamsModel} from "../models/teams.model";
 
 @Injectable()
 export class LolService {
@@ -57,5 +58,11 @@ export class LolService {
 
   getPlayersForSelectingModal(): Observable<LolModel[]> {
     return this.httpClient.get<LolModel[]>(this.lolUrl + '/no-pag');
+  }
+
+  getRankingsForSelectedPlayers(team1, team2) {
+    let teams: TeamsModel;
+    teams = { team1: team1, team2: team2 };
+    return this.httpClient.post<TeamsModel>(this.lolUrl + '/rankings', teams);
   }
 }

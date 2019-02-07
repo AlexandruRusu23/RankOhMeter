@@ -3,14 +3,8 @@ package ro.unibuc.rankohmeter.resources;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ro.unibuc.rankohmeter.models.LolFilterModel;
-import ro.unibuc.rankohmeter.models.GenericListModel;
-import ro.unibuc.rankohmeter.models.LolEntityModel;
-import ro.unibuc.rankohmeter.models.LolNoPagModel;
+import org.springframework.web.bind.annotation.*;
+import ro.unibuc.rankohmeter.models.*;
 import ro.unibuc.rankohmeter.services.LolService;
 
 import java.util.List;
@@ -31,5 +25,10 @@ public class LolResource {
     @GetMapping(value="/no-pag")
     public ResponseEntity<List<LolNoPagModel>> getAllNoPagPlayers() {
         return ResponseEntity.ok(lolService.getAllNoPagPlayers());
+    }
+
+    @RequestMapping(value="/rankings", method = RequestMethod.POST)
+    public ResponseEntity<Object> getRankingsForSelectedPlayers(@RequestBody final TeamsModel teams) {
+        return ResponseEntity.ok(lolService.getRankingsForSelectedPlayers(teams));
     }
 }

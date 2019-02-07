@@ -8,15 +8,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ro.unibuc.rankohmeter.entities.Lol;
-import ro.unibuc.rankohmeter.models.LolFilterModel;
-import ro.unibuc.rankohmeter.models.GenericListModel;
-import ro.unibuc.rankohmeter.models.LolNoPagModel;
+import ro.unibuc.rankohmeter.models.*;
 import ro.unibuc.rankohmeter.repositories.LolRepository;
 import ro.unibuc.rankohmeter.mappers.LolMapper;
-import ro.unibuc.rankohmeter.models.LolEntityModel;
 import ro.unibuc.rankohmeter.specifications.PlayersSpecifications;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -52,5 +49,22 @@ public class LolService {
                 .totalCount(lolPlayers.getTotalElements())
                 .build();
     }
+
+    public List<Map<String, Integer>> getRankingsForSelectedPlayers(final TeamsModel teams) {
+        Map<String, Integer> nameRankingPairTeam1 = new HashMap<>();
+        teams.getTeam1().stream().map(LolEntityModel::getName).forEach(p->nameRankingPairTeam1.put(p, 1));
+
+        Map<String, Integer> nameRankingPairTeam2 = new HashMap<>();
+        teams.getTeam2().stream().map(LolEntityModel::getName).forEach(p->nameRankingPairTeam2.put(p, 2));
+
+        List<Map<String, Integer>> test = new ArrayList<>();
+        test.add(nameRankingPairTeam1);
+        test.add(nameRankingPairTeam2);
+
+        System.out.println(test);
+
+        return test;
+    }
+
 
 }

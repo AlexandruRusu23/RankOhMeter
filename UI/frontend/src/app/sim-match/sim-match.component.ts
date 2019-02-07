@@ -58,9 +58,27 @@ export class SimMatchComponent implements OnInit {
     );
   }
 
-  // TODO
   simMatch() {
-    console.log('Sim match');
+    let team1 = [
+      this.playersBox.player1,
+      this.playersBox.player2,
+      this.playersBox.player3,
+      this.playersBox.player4,
+      this.playersBox.player5
+    ];
+
+    let team2 = [
+      this.playersBox.player6,
+      this.playersBox.player7,
+      this.playersBox.player8,
+      this.playersBox.player9,
+      this.playersBox.player10
+    ];
+
+
+
+    this.lolService.getRankingsForSelectedPlayers(team1, team2).subscribe();
+
   }
 
   private getPlayersForSelect() {
