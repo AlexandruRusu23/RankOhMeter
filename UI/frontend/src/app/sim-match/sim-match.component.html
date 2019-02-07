@@ -1,4 +1,4 @@
-<div class="container ">
+<div *ngIf="hideBoxes" class="container ">
 
   <div class="first-column">
     <div class="box">
@@ -28,7 +28,7 @@
   </div>
 
   <div class="action-button">
-    <button mat-button (click)="simMatch()"> Predict match </button>
+    <button mat-button (click)="simMatch()" [disabled]="!checkBoxes()"> Predict match </button>
   </div>
 
   <div class="last-column">
@@ -57,13 +57,4 @@
       <p *ngIf="isSelectedPlayer('player10')" [innerHtml]="getPlayerName('player10')"></p>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
 </div>

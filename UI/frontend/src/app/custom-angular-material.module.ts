@@ -3,11 +3,12 @@ import {
   MatCheckboxModule,
   MatIconModule, MatInputModule,
   MatLabel,
+  MatSnackBar,
   MatListModule,
   MatPaginatorModule,
   MatSidenavModule,
   MatTableModule,
-  MatToolbarModule,
+  MatToolbarModule, MatSnackBarModule,
 } from '@angular/material';
 import {NgModule} from '@angular/core';
 
@@ -22,6 +23,7 @@ import {NgModule} from '@angular/core';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -33,6 +35,7 @@ import {NgModule} from '@angular/core';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
+    MatSnackBarModule,
   ],
 })
 export class CustomAngularMaterialModule {

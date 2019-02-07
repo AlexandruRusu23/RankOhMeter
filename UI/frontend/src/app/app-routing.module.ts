@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: ListingPlayersComponent, data: { title: 'Listing Players Component' } },
   { path: 'listing-players', component: ListingPlayersComponent, data: { title: 'Listing Players Component' } },
   { path: 'sim-match', component: SimMatchComponent, data: { title: 'Sim Match Component' } },
-  { path: 'predict', component: PredictComponent, data: { title: 'Predict Component' } },
+  { path: 'result', component: PredictComponent, data: { title: 'Predict Component' } },
 ];
 
 @NgModule({

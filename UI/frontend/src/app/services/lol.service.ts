@@ -31,14 +31,6 @@ export class LolService {
       });
   }
 
-  // loadPlayersModal() {
-  //   this.httpClient.get<LolModel[]>(this.lolUrl)
-  //     .subscribe((players) => {
-  //       this.playersForSelect = players;
-  //       this.playersModalChanged.next(this.playersForSelect);
-  //     });
-  // }
-
   getFilterParams(pageIndex: number, pageSize: number, filter) {
     let params = new HttpParams();
     params = params.append('page', String(pageIndex));

@@ -50,20 +50,28 @@ public class LolService {
                 .build();
     }
 
-    public List<Map<String, Integer>> getRankingsForSelectedPlayers(final TeamsModel teams) {
-        Map<String, Integer> nameRankingPairTeam1 = new HashMap<>();
-        teams.getTeam1().stream().map(LolEntityModel::getName).forEach(p->nameRankingPairTeam1.put(p, 1));
+    public WinnersModel getRankingsForSelectedPlayers(final TeamsModel teams) {
 
-        Map<String, Integer> nameRankingPairTeam2 = new HashMap<>();
-        teams.getTeam2().stream().map(LolEntityModel::getName).forEach(p->nameRankingPairTeam2.put(p, 2));
+        final List<RankingTeamModel> team1Model = teams.getTeam1().stream()
+                .map(teamModel -> RankingTeamModel.builder()
+                        .playerName(teamModel.getName())
+                        .ranking(1L)
+                        .build())
+                .collect(Collectors.toList());
 
-        List<Map<String, Integer>> test = new ArrayList<>();
-        test.add(nameRankingPairTeam1);
-        test.add(nameRankingPairTeam2);
+        final List<RankingTeamModel> team2Model = teams.getTeam2().stream()
+                .map(teamModel -> RankingTeamModel.builder()
+                        .playerName(teamModel.getName())
+                        .ranking(2L)
+                        .build())
+                .collect(Collectors.toList());
 
-        System.out.println(test);
 
-        return test;
+
+        return WinnersModel.builder()
+                .team1(team1Model)
+                .team2(team2Model)
+                .build();
     }
 
 
