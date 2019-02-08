@@ -14,7 +14,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SimMatchComponent, SnackBarComponent} from './sim-match/sim-match.component';
 import { SelectPlayersModalComponent } from './select-players-modal/select-players-modal.component';
-import { PredictComponent } from './predict/predict.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { PredictComponent } from './predict/predict.component';
     ListingPlayersComponent,
     SimMatchComponent,
     SelectPlayersModalComponent,
-    PredictComponent,
     SnackBarComponent,
   ],
   imports: [

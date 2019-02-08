@@ -118,12 +118,17 @@ export class SimMatchComponent implements OnInit {
         let rankingTeam2 = winners.team2.map(value => value['ranking']).reduce((sum, value) => sum + value, 0);
 
         let winner = rankingTeam1 > rankingTeam2 ? this.getPlayerNames(winners.team1) : this.getPlayerNames(winners.team2);
+        let score = rankingTeam1 > rankingTeam2 ? rankingTeam1 : rankingTeam2;
+
 
         this.snackBar.openFromComponent(SnackBarComponent, {
           duration: 5000,
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
-          data: winner
+          data: {
+            'players': winner,
+            'ranking': score
+          }
         });
       }
     );
@@ -158,13 +163,16 @@ export class SimMatchComponent implements OnInit {
   selector: 'snack-bar-component-example-snack',
   template: `
     <div> A castigat echipa formata din jucatorii:</div>
-    <div>{{team}}</div>`,
+    <div>{{team}}</div>
+   <div>cu ranking-ul total de {{score}}</div>`,
   styles: [],
 })
 export class SnackBarComponent {
   team: string;
+  score: string;
 
   constructor(@Inject(MAT_SNACK_BAR_DATA) data: any) {
-    this.team = data;
+    this.team = data['players'];
+    this.score = data['ranking'];
   }
 }
